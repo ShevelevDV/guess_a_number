@@ -1,42 +1,27 @@
 import numpy as np
 
-tries=[]
+low=1
+mid=50
+high=101
+count=0
+search_range=[low,mid,high]
 number = np.random.randint(1, 101) # загадываем число
-predict_number = np.random.randint(1, 101) # первая попытка угадать
-tries.append(predict_number)
-predict_number = np.random.randint(1, 101) # вторая попытка угадать
-tries.append(predict_number)
-count = 2
-print(number)
-
-lower=1
-higher=101
 
 while True:
     
-    if tries[0]==number:
-        count=1
-        break
-    elif tries[1]==number:
-        count=2
-        break
-    
-    for i in tries:
-        if lower<i<number:
-            lower=i
-        elif higher>i>number:
-            higher=i 
-    
-    predict_number = np.random.randint(lower, higher)
-    tries.append(predict_number)
-    
     count += 1
+    predict_number = np.random.randint(low, high)
     
-    if predict_number==number  or tries[0]==number or tries[1]==number:
+    if predict_number == number:
         break
+    elif search_range[0]<predict_number<search_range[1]:
+        high=search_range[1]
+        mid=round((low+high)/2)
+    elif search_range[1]<predict_number<search_range[2]:
+        low=search_range[1]
+        mid=round((low+high)/2)
     
-    lower=1
-    higher=101
+    print(search_range)
     
-print(tries)
+    
 print(count)
