@@ -1,14 +1,10 @@
 import numpy as np
 
-def gues_number():
-    low=1
-    mid=50
-    high=101
-    count=0
+def guess_number(low,high):
+    mid=round((low+high)/2)
     search_range=[low,mid,high]
     print(search_range)
-    number = np.random.randint(1, 101) # загадываем число
-    
+    number = np.random.randint(low, high) # загадываем число 
 
     while True:
         
