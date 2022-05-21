@@ -1,7 +1,6 @@
 import numpy as np
 
 def guess_number(low,high):
-    mid=round((low+high)/2)
     count=0
     search_range=[low,high]
     number = np.random.randint(low, high)
